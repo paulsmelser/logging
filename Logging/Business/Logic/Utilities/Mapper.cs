@@ -1,4 +1,4 @@
-﻿namespace Logging.Business.Logic.Utilities
+﻿namespace Whatsnexx.Logging.Utilities
 {
     public static class Mapper
     {

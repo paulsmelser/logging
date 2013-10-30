@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Logging.Data.Repositories
+namespace Whatsnexx.Logging.Data.Repositories
 {
-	internal interface IRepository<T>
+	public interface IRepository<T>
 	{
 		bool Save(T entity);
 

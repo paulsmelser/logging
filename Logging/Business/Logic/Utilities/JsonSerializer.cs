@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Logging.Business.Logic.Utilities
+namespace Whatsnexx.Logging.Utilities
 {
     public static class JsonSerializer
     {

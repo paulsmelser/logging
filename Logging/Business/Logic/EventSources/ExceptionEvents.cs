@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Tracing;
 
-namespace Logging.Business.Logic.EventSources
+namespace Whatsnexx.Logging.EventSources
 {
     [EventSource(Name = "ExceptionEvents")]
     internal class ExceptionEvents : EventSource

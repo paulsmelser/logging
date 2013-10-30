@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Logging.Business.Entities
+namespace Whatsnexx.Logging.Entities
 {
     public class Payload
     {

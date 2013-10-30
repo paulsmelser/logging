@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logging.Business.Entities
+namespace Whatsnexx.Logging.Entities
 {
     public class EventSource
     {

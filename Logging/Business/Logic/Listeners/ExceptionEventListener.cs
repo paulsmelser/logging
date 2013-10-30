@@ -2,31 +2,31 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Tracing;
-using Logging.Business.Entities;
-using Logging.Business.Logic.Utilities;
-using Logging.Data.Repositories;
+using Whatsnexx.Logging.Data.Repositories;
+using Whatsnexx.Logging.Entities;
+using Whatsnexx.Logging.Utilities;
 
-namespace Logging.Business.Logic.Listeners
+namespace Whatsnexx.Logging.Listeners
 {
 
     public class ExceptionEventListener : EventListener
     {
-		private IRepository<ErrorLogEntry> GatewayStorageRepository { get; set; }
+		public IRepository<ErrorLogEntry> LoggingRepository { get; set; }
 
-		internal ExceptionEventListener(IRepository<ErrorLogEntry> gatewayStorageRepository)
-        {
-            GatewayStorageRepository = gatewayStorageRepository;
-        }
+		//internal ExceptionEventListener(IRepository<ErrorLogEntry> gatewayStorageRepository)
+		//{
+		//	LoggingRepository = gatewayStorageRepository;
+		//}
 
-	    protected ExceptionEventListener(){}
+		//protected ExceptionEventListener(){}
 
 	    protected override void OnEventWritten(EventWrittenEventArgs eventData)
-        {
-            var profileEngineError = eventData.Map<ErrorLogEntry>();
+	    {
+		    var profileEngineError = LogEntryMapper.MapError(eventData);
             var payload = new List<object>();
             try
             {
-				GatewayStorageRepository.Save(profileEngineError);
+				LoggingRepository.Save(profileEngineError);
             }
             catch(Exception gatewayException)
             {

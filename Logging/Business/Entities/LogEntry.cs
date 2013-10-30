@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Logging.Business.Enums;
-using Logging.Business.Logic.Utilities;
+using Whatsnexx.Logging.Enums;
+using Whatsnexx.Logging.Utilities;
 
-namespace Logging.Business.Entities
+namespace Whatsnexx.Logging.Entities
 {
     public class LogEntry
     {

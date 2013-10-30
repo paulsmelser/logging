@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.Tracing;
-using Logging.Business.Entities;
-using Logging.Business.Logic.Utilities;
-using Logging.Data.Repositories;
+using Whatsnexx.Logging.Data.Repositories;
+using Whatsnexx.Logging.Entities;
+using Whatsnexx.Logging.Utilities;
 
-namespace Logging.Business.Logic.Listeners
+namespace Whatsnexx.Logging.Listeners
 {
-	public class ApplicationLoggingListener :EventListener
+	internal class ApplicationLoggingListener :EventListener
 	{
-		private IRepository<LogEntry> GatewayStorageRepository { get; set; }
+		public IRepository<LogEntry> LoggingRepository { get; set; }
 
-		internal ApplicationLoggingListener(IRepository<LogEntry> gatewayStorageRepository)
-		{
-			GatewayStorageRepository = gatewayStorageRepository;
-		}
-		protected ApplicationLoggingListener(){}
-
+		//internal ApplicationLoggingListener(IRepository<LogEntry> gatewayStorageRepository)
+		//{
+		//	LoggingRepository = gatewayStorageRepository;
+		//}
+		//public ApplicationLoggingListener
 		protected override void OnEventWritten(EventWrittenEventArgs eventData)
 		{
-			var logEntry = eventData.Map<LogEntry>();
-
+			var logEntry = LogEntryMapper.Map(eventData);
 			try
 			{
-				GatewayStorageRepository.Save(logEntry);
+				LoggingRepository.Save(logEntry);
 			}
 			catch (Exception e)
 			{

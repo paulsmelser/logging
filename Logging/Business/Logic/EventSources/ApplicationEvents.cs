@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Tracing;
 
-namespace Logging.Business.Logic.EventSources
+namespace Whatsnexx.Logging.EventSources
 {
 
     [EventSource(Name = "ApplicationEvents")]
@@ -31,6 +31,7 @@ namespace Logging.Business.Logic.EventSources
             {
                 WriteEvent(200);
             }
+			WriteEvent(200);
         }
 
 		[Event(201, Message = "ApplicationTrace", Level = EventLevel.Verbose, Keywords = Keywords.Application, Task = Tasks.Unknown, Opcode = Opcodes.Trace, Version = 1)]

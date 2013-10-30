@@ -1,6 +1,11 @@
-﻿using Microsoft.Practices.Unity;
+﻿using System.Diagnostics.Tracing;
+using Microsoft.Practices.EnterpriseLibrary.SemanticLogging;
+using Microsoft.Practices.Unity;
+using Whatsnexx.Logging.Data.Repositories;
+using Whatsnexx.Logging.Entities;
+using Whatsnexx.Logging.Listeners;
 
-namespace Logging.Bootstrap
+namespace Whatsnexx.Logging.Bootstrap
 {
 	public class UnityConfigs
 	{
@@ -12,7 +17,14 @@ namespace Logging.Bootstrap
 
 		private static void RegisterLoggers(IUnityContainer container)
 		{
-
+			container.RegisterType<IRepository<LogEntry>, LogEntryRepository>();
+			container.RegisterType<ApplicationLoggingListener>(new ContainerControlledLifetimeManager(),
+				new InjectionProperty("LoggingRepository", new ResolvedParameter<IRepository<LogEntry>>()));
+			container.Resolve<ApplicationLoggingListener>().EnableEvents(EventLevel.Informational, Keywords.All);
+			container.RegisterType<IRepository<ErrorLogEntry>, ErrorLogEntryRepository>();
+			container.RegisterType<ExceptionEventListener>(new ContainerControlledLifetimeManager(),
+				new InjectionProperty("LoggingRepository", new ResolvedParameter<IRepository<ErrorLogEntry>>()));
+			container.Resolve<ExceptionEventListener>().EnableEvents(EventLevel.Error, Keywords.All);
 		}
 	}
 }

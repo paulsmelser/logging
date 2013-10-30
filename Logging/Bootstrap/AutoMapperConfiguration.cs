@@ -2,13 +2,13 @@
 using System.Diagnostics.Tracing;
 using System.Linq;
 using AutoMapper;
-using Logging.Business.Entities;
-using Logging.Business.Enums;
-using Logging.Business.Logic.Utilities;
-using EventSource = Logging.Business.Entities.EventSource;
+using Whatsnexx.Logging.Entities;
+using Whatsnexx.Logging.Enums;
+using Whatsnexx.Logging.Utilities;
+using EventSource = Whatsnexx.Logging.Entities.EventSource;
 using Mapper = AutoMapper.Mapper;
 
-namespace Logging.Bootstrap
+namespace Whatsnexx.Logging.Bootstrap
 {
 	public class AutomapperConfiguration
 	{

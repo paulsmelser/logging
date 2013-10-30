@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Logging.Business.Entities;
-using Logging.Data.Context;
+using Whatsnexx.Logging.Data.Context;
+using Whatsnexx.Logging.Entities;
 
-namespace Logging.Data.Repositories
+namespace Whatsnexx.Logging.Data.Repositories
 {
 	public class LogEntryRepository : IRepository<LogEntry>
 	{

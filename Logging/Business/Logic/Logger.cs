@@ -1,13 +1,23 @@
 ﻿using System;
-using Logging.Business.Logic.EventSources;
+using System.Data.Entity;
+using Microsoft.Practices.Unity;
+using Whatsnexx.Logging.Bootstrap;
+using Whatsnexx.Logging.Data;
+using Whatsnexx.Logging.Data.Context;
+using Whatsnexx.Logging.EventSources;
 
-namespace Logging.Business.Logic
+namespace Whatsnexx.Logging
 {
 	public static class Logger
 	{
 		internal static readonly ExceptionEvents ExceptionEventsLog = new ExceptionEvents();
 		internal static readonly ApplicationEvents ApplicationEventsLog = new ApplicationEvents();
 
+		static Logger()
+		{
+			UnityConfigs.RegisterTypes(new UnityContainer());
+			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<LoggingContext>());
+		}
 		public static void PublishingException(string interactions, Exception exception)
 		{
 			ExceptionEventsLog.PublishingException(interactions, exception.GetType().Name, exception.Message, exception.StackTrace);
@@ -31,6 +41,11 @@ namespace Logging.Business.Logic
 		public static void ApplicationTraceInformation(string message)
 		{
 			ApplicationEventsLog.ApplicationTraceInformation(message);
+		}
+
+		public static void RegisterDatabase(string connectionString)
+		{
+			Settings.SetDatabase(connectionString);
 		}
 	}
 }

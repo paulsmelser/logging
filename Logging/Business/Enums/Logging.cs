@@ -1,4 +1,4 @@
-﻿namespace Logging.Business.Enums
+﻿namespace Whatsnexx.Logging.Enums
 {
 
 	public enum Keywords

@@ -24,11 +24,11 @@ namespace Whatsnexx.Logging.EventSources
         }
 
         [Event(100, Level = EventLevel.Error, Message = "An error occured publishing message(s) to queue", Keywords = Keywords.DataAccess, Task = Tasks.PublishMessage, Opcode = Opcodes.UnknownError, Version = 1)]
-		internal void PublishingException(string interactions, string exceptionType, string exceptionMessage, string stackTrace)
+		internal void ExceptionHandled(string payload, string exceptionType, string exceptionMessage, string stackTrace)
         {
             if (IsEnabled(EventLevel.Error, Keywords.DataAccess))
             {
-				WriteEvent(100,  exceptionType, exceptionMessage, stackTrace, interactions);
+				WriteEvent(100, exceptionType, exceptionMessage, stackTrace, payload);
             }
         }
 

@@ -18,10 +18,6 @@ namespace Whatsnexx.Logging
 			UnityConfigs.RegisterTypes(new UnityContainer());
 			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<LoggingContext>());
 		}
-		public static void PublishingException(string interactions, Exception exception)
-		{
-			ExceptionEventsLog.PublishingException(interactions, exception.GetType().Name, exception.Message, exception.StackTrace);
-		}
 
 		public static void ApplictionStartupFailure(Exception exception)
 		{

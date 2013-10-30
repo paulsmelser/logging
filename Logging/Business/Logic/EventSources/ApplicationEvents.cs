@@ -31,7 +31,6 @@ namespace Whatsnexx.Logging.EventSources
             {
                 WriteEvent(200);
             }
-			WriteEvent(200);
         }
 
 		[Event(201, Message = "ApplicationTrace", Level = EventLevel.Verbose, Keywords = Keywords.Application, Task = Tasks.Unknown, Opcode = Opcodes.Trace, Version = 1)]

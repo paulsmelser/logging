@@ -9,15 +9,16 @@ namespace Whatsnexx.Logging.Data.Repositories
 	{
 		public bool Save(ErrorLogEntry entity)
 		{
-			var context = new LoggingContext();
-			context.ErrorLogEntries.Add(entity);
+			var context = new LoggingContext(Settings.ConnectionString);
+			context.ErrorLogEntries.Add(Mappers.LogEntryMapper.MapError(entity));
 			return context.SaveChanges() != 0;
 		}
 
 		public ErrorLogEntry Find(Guid id)
 		{
-			var context = new LoggingContext();
-			return context.ErrorLogEntries.Find(id);
+			throw new NotSupportedException();
+			//var context = new LoggingContext();
+			//return context.ErrorLogEntries.Find(id);
 		}
 
 		public IList<ErrorLogEntry> FindAll()

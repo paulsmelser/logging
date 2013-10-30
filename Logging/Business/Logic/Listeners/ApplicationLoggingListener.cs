@@ -11,11 +11,6 @@ namespace Whatsnexx.Logging.Listeners
 	{
 		public IRepository<LogEntry> LoggingRepository { get; set; }
 
-		//internal ApplicationLoggingListener(IRepository<LogEntry> gatewayStorageRepository)
-		//{
-		//	LoggingRepository = gatewayStorageRepository;
-		//}
-		//public ApplicationLoggingListener
 		protected override void OnEventWritten(EventWrittenEventArgs eventData)
 		{
 			var logEntry = LogEntryMapper.Map(eventData);
@@ -25,7 +20,7 @@ namespace Whatsnexx.Logging.Listeners
 			}
 			catch (Exception e)
 			{
-				Trace.TraceError("Could not save log to Gateway database: " + e.Message + " : " + JsonSerializer.SerializeObject(logEntry));
+				Trace.TraceError("Could not save log to database: " + e.Message + " : " + JsonSerializer.SerializeObject(logEntry));
 			}
 		}
 

@@ -13,26 +13,19 @@ namespace Whatsnexx.Logging.Listeners
     {
 		public IRepository<ErrorLogEntry> LoggingRepository { get; set; }
 
-		//internal ExceptionEventListener(IRepository<ErrorLogEntry> gatewayStorageRepository)
-		//{
-		//	LoggingRepository = gatewayStorageRepository;
-		//}
-
-		//protected ExceptionEventListener(){}
-
 	    protected override void OnEventWritten(EventWrittenEventArgs eventData)
 	    {
-		    var profileEngineError = LogEntryMapper.MapError(eventData);
+		    var errorLogEntry = LogEntryMapper.MapError(eventData);
             var payload = new List<object>();
             try
             {
-				LoggingRepository.Save(profileEngineError);
+				LoggingRepository.Save(errorLogEntry);
             }
             catch(Exception gatewayException)
             {
                 payload.Add(gatewayException.GetType().Name);
                 payload.Add(gatewayException.Message);
-                Trace.TraceError(JsonSerializer.SerializeObject(profileEngineError, true, true));
+                Trace.TraceError(JsonSerializer.SerializeObject(errorLogEntry, true, true));
             }
         }
 

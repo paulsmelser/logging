@@ -85,6 +85,7 @@
     <Compile Include="Business\Logic\EventSources\ApplicationEvents.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Logic\ILogger.cs" />
     <Compile Include="Business\Logic\Listeners\ApplicationLoggingListener.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,6 +115,9 @@
     </Compile>
     <Compile Include="Business\Logic\Utilities\JsonSerializer.cs" />
     <Compile Include="Business\Logic\Utilities\Mapper.cs" />
+    <Compile Include="Data\Entities\ErrorLogEntry.cs" />
+    <Compile Include="Data\Entities\LogEntry.cs" />
+    <Compile Include="Data\Mappers\LogEntryMapper.cs" />
     <Compile Include="Data\Repositories\ErrorLogEntryRepository.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\Repositories\LogEntryRepository.cs" />

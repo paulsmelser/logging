@@ -23,7 +23,7 @@ namespace Whatsnexx.Logging.EventSources
             public const EventOpcode TimeOut = (EventOpcode) 121;
         }
 
-        [Event(100, Level = EventLevel.Error, Message = "An error occured publishing message(s) to queue", Keywords = Keywords.DataAccess, Task = Tasks.PublishMessage, Opcode = Opcodes.UnknownError, Version = 1)]
+        [Event(100, Level = EventLevel.Error, Message = "An exception was handled by user code", Keywords = Keywords.DataAccess, Task = Tasks.PublishMessage, Opcode = Opcodes.UnknownError, Version = 1)]
 		internal void ExceptionHandled(string payload, string exceptionType, string exceptionMessage, string stackTrace)
         {
             if (IsEnabled(EventLevel.Error, Keywords.DataAccess))

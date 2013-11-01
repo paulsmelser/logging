@@ -1,4 +1,5 @@
-﻿using Whatsnexx.Logging;
+﻿using System;
+using Whatsnexx.Logging;
 
 namespace ConsoleApplication1
 {
@@ -8,6 +9,8 @@ namespace ConsoleApplication1
 		{
 			Logger.RegisterDatabase("Data Source=(local);Integrated Security=SSPI;Initial Catalog=Logging;");
 			Logger.ApplicationStartup();
+			Logger.ApplicationTrace("Hello Baby");
+			Logger.ExceptionHandled(new Exception(), "{json:fun}");
 		}
 	}
 }

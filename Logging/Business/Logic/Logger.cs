@@ -24,6 +24,10 @@ namespace Whatsnexx.Logging
 			ExceptionEventsLog.ApplictionStartupFailure(exception.GetType().Name, exception.Message, exception.StackTrace);
 		}
 
+		public static void ExceptionHandled(Exception exception, string payload)
+		{
+			ExceptionEventsLog.ExceptionHandled(payload, exception.GetType().Name, exception.Message, exception.StackTrace);
+		}
 		public static void ApplicationStartup()
 		{
 			ApplicationEventsLog.ApplicationStartup();

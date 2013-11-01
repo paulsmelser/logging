@@ -19,7 +19,7 @@ namespace Whatsnexx.Logging.Bootstrap
 			container.RegisterType<IRepository<LogEntry>, LogEntryRepository>();
 			container.RegisterType<ApplicationLoggingListener>(new ContainerControlledLifetimeManager(),
 				new InjectionProperty("LoggingRepository", new ResolvedParameter<IRepository<LogEntry>>()));
-			container.Resolve<ApplicationLoggingListener>().EnableEvents(EventLevel.Informational, Keywords.All);
+			container.Resolve<ApplicationLoggingListener>().EnableEvents(EventLevel.Verbose, Keywords.All);
 
 			container.RegisterType<IRepository<ErrorLogEntry>, ErrorLogEntryRepository>();
 			container.RegisterType<ExceptionEventListener>(new ContainerControlledLifetimeManager(),

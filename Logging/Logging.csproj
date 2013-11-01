@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Business\Logic\Utilities\JsonSerializer.cs" />
     <Compile Include="Business\Logic\Utilities\Mapper.cs" />
+    <Compile Include="Data\Configuration\LoggingDbConfig.cs" />
     <Compile Include="Data\Entities\ErrorLogEntry.cs" />
     <Compile Include="Data\Entities\LogEntry.cs" />
     <Compile Include="Data\Mappers\LogEntryMapper.cs" />
@@ -127,7 +128,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Data\Settings.cs" />
+    <Compile Include="Data\Configuration\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

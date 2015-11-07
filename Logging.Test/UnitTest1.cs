@@ -10,10 +10,10 @@ namespace Logging.Test
         [TestMethod]
         public void TestMethod1()
         {
-            //Logger.RegisterDatabase("Data Source=(local);Integrated Security=SSPI;Initial Catalog=Logging;");
-            //Logger.ApplicationStartup();
-            //Logger.ApplicationTrace("Hello Baby");
-            //Logger.ExceptionHandled(new Exception(), "{json:fun}");
+            Logger.RegisterDatabase("Data Source=(local);Integrated Security=SSPI;Initial Catalog=Logging;");
+            Logger.ApplicationStartup();
+            Logger.ApplicationTrace("Hello Baby");
+            Logger.ExceptionHandled(new Exception(), "{json:fun}");
         }
     }
 }

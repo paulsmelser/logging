@@ -14,7 +14,6 @@ namespace Logging.Test
             //Logger.ApplicationStartup();
             //Logger.ApplicationTrace("Hello Baby");
             //Logger.ExceptionHandled(new Exception(), "{json:fun}");
-            Assert.Fail();
         }
     }
 }
